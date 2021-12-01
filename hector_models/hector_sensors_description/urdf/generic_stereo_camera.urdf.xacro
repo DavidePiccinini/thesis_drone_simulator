@@ -29,15 +29,15 @@
   <gazebo reference="${name}_left_camera_frame">
     <sensor type="multicamera" name="stereo_camera">
       <!-- see MultiSenseSLPlugin.h for available modes -->
-      <update_rate>30.0</update_rate>
+      <update_rate>${update_rate}</update_rate>
       <camera name="left">
         <!-- Spec sheet says 80deg X 45deg @ 1024x544pix.  Based on feedback
-             from teams, we're instead doing 80deg X 80deg @ 800x800pix. -->
-        <horizontal_fov>1.3962634</horizontal_fov>
+             from teams, were instead doing 80deg X 80deg @ 800x800pix. -->
+        <horizontal_fov>${hfov * M_PI/180.0}</horizontal_fov>
         <image>
-          <width>800</width>
-          <height>800</height>
-          <format>R8G8B8</format>
+          <format>${image_format}</format>
+          <width>${res_x}</width>
+          <height>${res_y}</height>
         </image>
         <clip>
           <near>0.02</near>
@@ -46,7 +46,7 @@
         <noise>
           <type>gaussian</type>
           <!-- Noise is sampled independently per pixel on each frame.  
-               That pixel's noise value is added to each of its color
+               That pixels noise value is added to each of its color
                channels, which at that point lie in the range [0,1].
                The stddev value of 0.007 is based on experimental data 
                from a camera in a Sandia hand pointed at a static scene
@@ -58,12 +58,12 @@
       <camera name="right">
         <pose>0 ${-baseline} 0 0 0 0</pose>
         <!-- Spec sheet says 80deg X 45deg @ 1024x544pix.  Based on feedback
-             from teams, we're instead doing 80deg X 80deg @ 800x800pix. -->
-        <horizontal_fov>1.3962634</horizontal_fov>
+             from teams, were instead doing 80deg X 80deg @ 800x800pix. -->
+        <horizontal_fov>${hfov * M_PI/180.0}</horizontal_fov>
         <image>
-          <width>800</width>
-          <height>800</height>
-          <format>R8G8B8</format>
+          <format>${image_format}</format>
+          <width>${res_x}</width>
+          <height>${res_y}</height>
         </image>
         <clip>
           <near>0.02</near>
@@ -72,7 +72,7 @@
         <noise>
           <type>gaussian</type>
           <!-- Noise is sampled independently per pixel on each frame.  
-               That pixel's noise value is added to each of its color
+               That pixels noise value is added to each of its color
                channels, which at that point lie in the range [0,1].
                The stddev value of 0.007 is based on experimental data 
                from a camera in a Sandia hand pointed at a static scene
@@ -83,8 +83,8 @@
       </camera>
       <plugin name="stereo_camera_controller" filename="libgazebo_ros_multicamera.so">
         <cameraName>${name}</cameraName>
-        <imageTopicName>image_raw</imageTopicName>
-        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <imageTopicName>${ros_topic}</imageTopicName>
+        <cameraInfoTopicName>${cam_info_topic}</cameraInfoTopicName>
         <frameName>${name}_left_camera_optical_frame</frameName>
         <!--<rightFrameName>right_camera_optical_frame</rightFrameName>-->
         <hackBaseline>${baseline}</hackBaseline>

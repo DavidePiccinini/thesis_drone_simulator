@@ -12,8 +12,8 @@
     
     <!-- Stereo camera -->
     <xacro:include filename="$(find hector_sensors_description)/urdf/generic_stereo_camera.urdf.xacro" />
-    <xacro:generic_stereo_camera name="stereo_cam" parent="base_link" ros_topic="camera/image" cam_info_topic="camera/camera_info" update_rate="4" res_x="320" res_y="240" image_format="R8G8B8" hfov="90" baseline="0.05">
-      <origin xyz="0.05 0.0 -0.06" rpy="0 0 0"/>
+    <xacro:generic_stereo_camera name="stereo_cam" parent="base_link" ros_topic="camera/image" cam_info_topic="camera/camera_info" update_rate="20" res_x="550" res_y="500" image_format="R8G8B8" hfov="90" baseline="0.05">
+      <origin xyz="0.3 0.0 -0.06" rpy="0 0 0"/>
     </xacro:generic_stereo_camera>
     
 </robot>

@@ -16,7 +16,7 @@
   </include>
 
   <!-- Start rviz visualization with Kimera config -->
-  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d /home/thesis_ws/src/Kimera-VIO-ROS/rviz/kimera_vio_simulator.rviz"/> -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d /home/thesis_ws/src/Kimera-VIO-ROS/rviz/kimera_vio_simulator.rviz"/>
 
   <!-- We use the dualshock3 teleop -->
   <!-- <include file="$(find hector_quadrotor_teleop)/launch/sony_dualshock3.launch" >

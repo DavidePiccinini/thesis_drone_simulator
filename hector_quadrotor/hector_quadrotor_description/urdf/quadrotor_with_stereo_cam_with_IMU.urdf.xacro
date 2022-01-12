@@ -4,13 +4,13 @@
    
     <xacro:property name="M_PI" value="3.1415926535897931" />
     
-    <!-- Desired quadrotor position and attitude -->
-    <xacro:property name="X" value="0" />
+    <!-- The quadrotor position and attitude, equal to the one in the launch file -->
+    <!--<xacro:property name="X" value="0" />
     <xacro:property name="Y" value="0" />
     <xacro:property name="Z" value="0" />
     <xacro:property name="ROLL" value="${0 * pi/180}" />
     <xacro:property name="PITCH" value="${0 * pi/180}" />
-    <xacro:property name="YAW" value="${0 * pi/180}" />
+    <xacro:property name="YAW" value="${0 * pi/180}" />-->
     
     <!-- Camera coordinates in the quadrotor frame -->
     <xacro:property name="camera_x_coord" value="0.3" />
@@ -18,20 +18,20 @@
     <xacro:property name="camera_z_coord" value="-0.06" />
     
     <!-- Rotated camera coordinates in the quadrotor frame -->
-    <xacro:property name="rot_camera_x_coord" value="${(cos(YAW)*cos(PITCH)*(camera_x_coord)) + ((cos(YAW)*sin(PITCH)*sin(ROLL)-sin(YAW)*cos(ROLL))*camera_y_coord) + ((cos(YAW)*sin(PITCH)*cos(ROLL)+sin(YAW)*sin(ROLL))*(camera_z_coord))}" />
+    <!--<xacro:property name="rot_camera_x_coord" value="${(cos(YAW)*cos(PITCH)*(camera_x_coord)) + ((cos(YAW)*sin(PITCH)*sin(ROLL)-sin(YAW)*cos(ROLL))*camera_y_coord) + ((cos(YAW)*sin(PITCH)*cos(ROLL)+sin(YAW)*sin(ROLL))*(camera_z_coord))}" />
     <xacro:property name="rot_camera_y_coord" value="${(sin(YAW)*cos(PITCH)*(camera_x_coord)) + ((sin(YAW)*sin(PITCH)*sin(ROLL)+cos(YAW)*cos(ROLL))*camera_y_coord) + ((sin(YAW)*sin(PITCH)*cos(ROLL)-cos(YAW)*sin(ROLL))*(camera_z_coord))}" />
-    <xacro:property name="rot_camera_z_coord" value="${(-sin(PITCH)*(camera_x_coord)) 		  +  (cos(PITCH)*sin(ROLL)*camera_y_coord) 								+  (cos(PITCH)*cos(ROLL)*(camera_z_coord))}							    " />
+    <xacro:property name="rot_camera_z_coord" value="${(-sin(PITCH)*(camera_x_coord)) 		  +  (cos(PITCH)*sin(ROLL)*camera_y_coord) 								+  (cos(PITCH)*cos(ROLL)*(camera_z_coord))}							    " />-->
     
     <!-- Included URDF Files -->
     <xacro:include filename="$(find hector_quadrotor_description)/urdf/quadrotor_base.urdf.xacro" />
     
     <!-- Instantiate quadrotor_base_macro once -->
-    <xacro:quadrotor_base_macro x="${X}" y="${Y}" z="${Z}" roll="${ROLL}" pitch="${PITCH}" yaw="${YAW}"/>
+    <xacro:quadrotor_base_macro/>
     
     <!-- Stereo camera -->
     <xacro:include filename="$(find hector_sensors_description)/urdf/generic_stereo_camera.urdf.xacro" />
     <xacro:generic_stereo_camera name="stereo_cam" parent="base_link" ros_topic="camera/image" cam_info_topic="camera/camera_info" update_rate="20" res_x="550" res_y="500" image_format="R8G8B8" hfov="90" baseline="0.05">
-      <origin xyz="${X+rot_camera_x_coord} ${Y+rot_camera_y_coord} ${Z+rot_camera_z_coord}" rpy="${ROLL} ${PITCH} ${YAW}"/>
+      <origin xyz="${camera_x_coord} ${camera_y_coord} ${camera_z_coord}" rpy="0 0 0"/>
     </xacro:generic_stereo_camera>
     
 </robot>

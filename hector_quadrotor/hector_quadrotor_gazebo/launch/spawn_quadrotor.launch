@@ -10,9 +10,12 @@
     "/>
   <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
 
-  <arg name="x" default="0.0"/>
-  <arg name="y" default="0.0"/>
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
   <arg name="z" default="0.3"/>
+  <arg name="R" default="0"/>
+  <arg name="P" default="0"/>
+  <arg name="Y" default="0"/>
 
   <arg name="use_ground_truth_for_tf" default="true" />
   <arg name="use_ground_truth_for_control" default="true" />
@@ -82,6 +85,9 @@
            -x $(arg x)
            -y $(arg y)
            -z $(arg z)
+           -R $(arg R)
+           -P $(arg P)
+           -Y $(arg Y)
            -model $(arg name)"
         respawn="false" output="screen"/>
 

@@ -3,7 +3,7 @@
 <launch>
 
   <!-- Start Gazebo -->
-  <include file="$(find hector_gazebo_worlds)/launch/indoor_disaster_scenario.launch"/>
+  <include file="$(find hector_gazebo_worlds)/launch/indoor_scenario.launch"/>
 
   <!-- Spawn simulated quadrotor uav -->
   <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch" >
@@ -15,7 +15,7 @@
     <arg name="z" value="0.3"/>
     <arg name="R" value="$(eval 0 * pi/180)"/>
   	<arg name="P" value="$(eval 0 * pi/180)"/>
-  	<arg name="Y" value="$(eval 0 * pi/180)"/>
+  	<arg name="Y" value="$(eval 90 * pi/180)"/>
   </include>
 
   <!-- Start rviz visualization with Kimera config -->

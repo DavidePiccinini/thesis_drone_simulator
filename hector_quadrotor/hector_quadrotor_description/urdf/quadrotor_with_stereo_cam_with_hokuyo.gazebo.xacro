@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <robot name="quadrotor" xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <xacro:include filename="$(find hector_quadrotor_description)/urdf/quadrotor_with_stereo_cam_with_IMU.urdf.xacro" />
+    <xacro:include filename="$(find hector_quadrotor_description)/urdf/quadrotor_with_stereo_cam_with_hokuyo.urdf.xacro" />
     <xacro:include filename="$(find hector_quadrotor_gazebo)/urdf/quadrotor_plugins.gazebo.xacro" />
     
     <!-- Add the IMU to the base link -->

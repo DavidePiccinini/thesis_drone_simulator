@@ -8,7 +8,7 @@
   <!-- Spawn simulated quadrotor uav -->
   <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch" >
   	<!-- Model -->
-    <arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_with_stereo_cam_with_IMU.gazebo.xacro"/>
+    <arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_with_stereo_cam_with_hokuyo.gazebo.xacro"/>
     <!-- Position and attitude -->
     <arg name="x" value="0"/>
     <arg name="y" value="0"/>

@@ -34,11 +34,6 @@
     <xacro:property name="sonar_y_coord" value="0" />
     <xacro:property name="sonar_z_coord" value="-0.012" />
     
-    <!-- Rotated sonar height sensor coordinates in the quadrotor frame -->
-    <!--<xacro:property name="rot_sonar_x_coord" value="${(cos(yaw)*cos(pitch)*(sonar_x_coord)) + ((cos(yaw)*sin(pitch)*sin(roll)-sin(yaw)*cos(roll))*sonar_y_coord) + ((cos(yaw)*sin(pitch)*cos(roll)+sin(yaw)*sin(roll))*(sonar_z_coord))}" />
-    <xacro:property name="rot_sonar_y_coord" value="${(sin(yaw)*cos(pitch)*(sonar_x_coord)) + ((sin(yaw)*sin(pitch)*sin(roll)+cos(yaw)*cos(roll))*sonar_y_coord) + ((sin(yaw)*sin(pitch)*cos(roll)-cos(yaw)*sin(roll))*(sonar_z_coord))}" />
-    <xacro:property name="rot_sonar_z_coord" value="${(-sin(pitch)*(sonar_x_coord)) 		+  (cos(pitch)*sin(roll)*sonar_y_coord) 							 +  (cos(pitch)*cos(roll)*(sonar_z_coord))}							    " />-->
-
     <!-- Sonar height sensor -->
     <xacro:sonar_sensor name="sonar" parent="base_link" ros_topic="sonar_height" update_rate="10" min_range="0.03" max_range="3.0" field_of_view="${pi/4.5}" ray_count="3">
       <origin xyz="${sonar_x_coord} ${sonar_y_coord} ${sonar_z_coord}" rpy="0 ${pi/2} 0"/>

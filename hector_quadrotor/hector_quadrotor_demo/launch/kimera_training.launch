@@ -15,10 +15,19 @@
     <arg name="z" value="0.3"/>
     <arg name="R" value="$(eval 0 * pi/180)"/>
   	<arg name="P" value="$(eval 0 * pi/180)"/>
-  	<arg name="Y" value="$(eval 0 * pi/180)"/>
+  	<arg name="Y" value="$(eval 90 * pi/180)"/>
   </include>
 
   <!-- Start rviz visualization with Kimera config -->
   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find kimera_vio_ros)/rviz/kimera_vio_drone_simulator_ego_exo.rviz"/>
+  
+  <!-- Start the fixed-orientation drone frame publisher -->
+  <include file="$(find interface_code)/launch/drone_frame_publisher.launch"/><!-- -->
+  
+  <!-- Start the closest obstacle detection node -->
+  <include file="$(find interface_code)/launch/closest_obstacle_publisher.launch"/>
+  
+  <!-- Start the ArUco markers detection node -->
+  <include file="$(find aruco_ros)/launch/marker_publisher.launch"/><!-- -->
 
 </launch>

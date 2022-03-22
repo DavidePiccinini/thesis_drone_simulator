@@ -19,7 +19,7 @@
   </include>
 
   <!-- Start rviz visualization with Kimera config -->
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find kimera_vio_ros)/rviz/kimera_vio_drone_simulator_ego_exo.rviz"/>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find kimera_vio_ros)/rviz/kimera_vio_drone_simulator_exo.rviz"/><!-- -->
   
   <!-- Start the fixed-orientation drone frame publisher -->
   <include file="$(find interface_code)/launch/drone_frame_publisher.launch"/><!-- -->

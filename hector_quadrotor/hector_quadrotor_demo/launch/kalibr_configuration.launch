@@ -19,6 +19,6 @@
   </include>
 
   <!-- Start rviz visualization with Kimera config -->
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find kimera_vio_ros)/rviz/kimera_vio_drone_simulator.rviz"/>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find kimera_vio_ros)/rviz/kimera_vio_drone_simulator_ego.rviz"/>
 
 </launch>
